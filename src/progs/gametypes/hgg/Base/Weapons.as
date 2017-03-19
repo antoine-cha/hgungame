@@ -81,21 +81,21 @@ class Weapons {
     int award(int frags) {
         switch (frags) {
             case 0:
-                return WEAP_NONE;
-            case 1:
                 return WEAP_ELECTROBOLT;
-            case 2:
-                return WEAP_GRENADELAUNCHER;
-            case 3:
+            case 1:
                 return WEAP_ROCKETLAUNCHER;
-            case 4:
-                return WEAP_PLASMAGUN;
-            case 5:
+            case 2:
                 return WEAP_LASERGUN;
+            case 3:
+                return WEAP_PLASMAGUN;
+            case 4:
+                return WEAP_GRENADELAUNCHER;
+            case 5:
+                return WEAP_RIOTGUN;
             case 6:
                 return WEAP_MACHINEGUN;
             case 7:
-                return WEAP_RIOTGUN;
+                return WEAP_GUNBLADE;
         }
 
         return WEAP_TOTAL;
@@ -116,7 +116,7 @@ class Weapons {
         if (gametype.get_isInstagib())
             giveWeapon(client, WEAP_INSTAGUN, INFINITY);
         else
-            giveWeapon(client, WEAP_GUNBLADE, INFINITY);
+            giveWeapon(client, WEAP_ELECTROBOLT, INFINITY);
     }
 
     bool heavy(int weapon) {

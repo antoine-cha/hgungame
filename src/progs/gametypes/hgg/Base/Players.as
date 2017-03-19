@@ -192,11 +192,24 @@ class Players {
         if (award == WEAP_NONE)
             return;
 
-        if (award < WEAP_TOTAL)
+        if (award < WEAP_TOTAL) {
+            client.inventoryClear();
             awardWeapon(client, award,
                     ammo == INFINITY ? weapons.ammo(award) : ammo, real);
-        else if (real)
+            weapons.selectBest(client);
+        } else if (real) {
             get(client.playerNum).showRow();
+        }
+
+        /* Last level: award all weapons */
+        if (award == WEAP_TOTAL) {
+            for (int i = 0; i <= 6; i++) {
+                int new_award = weapons.award(i);
+                awardWeapon(client, new_award,
+                        ammo == INFINITY ? weapons.ammo(award) : ammo, real);
+            }
+        }
+
 
         if (weapons.weak(weapon)) {
             for (int i = 0; i <= player.row
